@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
 
     public Text timeCounter;
 
+    public GameObject leaderboardMenu;
+
+    public GameObject leaderboardManager;
+
     private TimeSpan timePlaying;
     private bool timerGoing;
 
@@ -49,7 +53,10 @@ private int level;
         {
             if(elapsedTime <= 0){
                EndTimer();
-               NewGame();
+            //    NewGame();
+                leaderboardManager.GetComponent<Leaderboard>().SubmitScore(coins * 50);
+                StartCoroutine(leaderboardManager.GetComponent<Leaderboard>().FetchTopHighscoresRoutine());
+                leaderboardMenu.SetActive(true);
                break;
             }
             elapsedTime -= Time.deltaTime;
