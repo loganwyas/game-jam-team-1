@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8916018530354837467}
   - component: {fileID: 2663897948963339332}
   - component: {fileID: 1045637228810240225}
+  - component: {fileID: 7599621312421135197}
   m_Layer: 0
   m_Name: barrel
   m_TagString: Untagged
@@ -101,3 +102,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 40.000004
+--- !u!50 &7599621312421135197
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3574349511278815648}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 8
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
