@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a14275cac5654e0a9d6a64d764123ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinCounter: {fileID: 2054748331}
   timeCounter: {fileID: 752500499}
 --- !u!1 &237447260
 GameObject:
