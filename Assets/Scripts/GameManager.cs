@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class TimerController : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static TimerController instance;
 
     public Text timeCounter;
 
@@ -18,19 +16,19 @@ public class TimerController : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
     }
 
     void Start()
     {
         timeCounter.text = "Time: 03:00.00";
         timerGoing = false;    
+        BeginTimer();
     }
 
     public void BeginTimer() 
     {
         timerGoing = true;
-        elapsedTime = 0f;
+        elapsedTime = 180f;
 
         StartCoroutine(UpdateTimer());
     }
@@ -52,4 +50,5 @@ public class TimerController : MonoBehaviour
             yield return null;
         }
     }
+
 }
