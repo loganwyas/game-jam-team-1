@@ -19,23 +19,21 @@ public class GameManager : MonoBehaviour
 
     private float elapsedTime;
     private int coins = 0;
-
+private int level;
     private void Awake()
     {
     }
 
     void Start()
     {
-        // DontDestroyOnLoad(gameObject);
-        timeCounter.text = "Time: 03:00.00";
-        timerGoing = false;    
-        BeginTimer();
+        DontDestroyOnLoad(gameObject);
+        NewGame();
     }
 
     public void BeginTimer() 
     {
         timerGoing = true;
-        elapsedTime =  45f;
+        elapsedTime =  180f;
 
         StartCoroutine(UpdateTimer());
     }
@@ -50,7 +48,6 @@ public class GameManager : MonoBehaviour
         while(timerGoing) 
         {
             if(elapsedTime <= 0){
-                // TODO: End Game and Send score
                EndTimer();
                NewGame();
                break;
@@ -65,18 +62,40 @@ public class GameManager : MonoBehaviour
     }
 
     private void NewGame(){
-        coins = 0;
-        Restart();
+        timeCounter.text = "Time: 03:00.00";
+        timerGoing = false;    
+        BeginTimer();
+        setCoins(0);
+        LoadLevel(1);
+    }
+
+    private void setCoins(int number){
+    coins = number;
+    coinCounter.text = "Coins: " + coins.ToString();
     }
 
     public void NextLevel(){
-        coins += 1;
-        coinCounter.text = "Coins: " + coins.ToString();
+        if(elapsedTime > 0){
+            setCoins(coins + 1);
+            Restart();
+        }
     }
 
     private void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+      LoadLevel(1);
+    }
+
+        private void LoadLevel(int index)
+    {
+        level = index;
+
+        Invoke(nameof(LoadScene), 1f);
+    }
+
+    private void LoadScene()
+    {
+        SceneManager.LoadScene(level);
     }
 
 
