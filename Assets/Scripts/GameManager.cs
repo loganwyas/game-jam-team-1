@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
         timeCounter.text = "Time: 03:00.00";
         timerGoing = false;    
         BeginTimer();
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public void BeginTimer() 
     {
         timerGoing = true;
-        elapsedTime =  180f;
+        elapsedTime =  45f;
 
         StartCoroutine(UpdateTimer());
     }
@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
             if(elapsedTime <= 0){
                 // TODO: End Game and Send score
                EndTimer();
-               coins = 0;
                NewGame();
                break;
             }
@@ -73,7 +72,6 @@ public class GameManager : MonoBehaviour
     public void NextLevel(){
         coins += 1;
         coinCounter.text = "Coins: " + coins.ToString();
-        Restart();
     }
 
     private void Restart()
