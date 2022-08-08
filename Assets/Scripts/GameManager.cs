@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public void BeginTimer() 
     {
         timerGoing = true;
-        elapsedTime = 180f;
+        elapsedTime = 2f;
 
         StartCoroutine(UpdateTimer());
     }
@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
     {
         while(timerGoing) 
         {
+            if(elapsedTime <= 0){
+               EndTimer();
+               break;
+            }
             elapsedTime -= Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             string timePlayingStr = "Time: " + timePlaying.ToString("mm':'ss'.'ff");
@@ -50,5 +54,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+    
 
 }
