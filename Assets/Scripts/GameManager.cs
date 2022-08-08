@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel(){
         coins += 1;
-         coinCounter.text = "Coins: " + coins.ToString();
+        coinCounter.text = "Coins: " + coins.ToString();
         Restart();
     }
 
