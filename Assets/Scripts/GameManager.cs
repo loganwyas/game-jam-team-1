@@ -10,12 +10,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
+    public Text coinCounter;
+
     public Text timeCounter;
 
     private TimeSpan timePlaying;
     private bool timerGoing;
 
     private float elapsedTime;
+    private int coins = 0;
 
     private void Awake()
     {
@@ -24,7 +27,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        // NewGame();
         timeCounter.text = "Time: 03:00.00";
         timerGoing = false;    
         BeginTimer();
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
     public void BeginTimer() 
     {
         timerGoing = true;
-        elapsedTime =  30f;
+        elapsedTime =  180f;
 
         StartCoroutine(UpdateTimer());
     }
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
             if(elapsedTime <= 0){
                 // TODO: End Game and Send score
                EndTimer();
+               coins = 0;
                NewGame();
                break;
             }
@@ -62,45 +65,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-     private int level;
+    private void NewGame(){
+        coins = 0;
+        Restart();
+    }
 
-    private void NewGame()
+    public void NextLevel(){
+        coins += 1;
+         coinCounter.text = "Coins: " + coins.ToString();
+        Restart();
+    }
+
+    private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    // private void LoadLevel(int index)
-    // {
-    //     level = index;
-
-    //     Camera camera = Camera.main;
-
-    //     // Don't render anything while loading the next scene to create
-    //     // a simple scene transition effect
-    //     if (camera != null) {
-    //         camera.cullingMask = 0;
-    //     }
-
-    //     Invoke(nameof(LoadScene), 1f);
-    // }
-
-    // private void LoadScene()
-    // {
-    //     SceneManager.LoadScene(level);
-    // }
-
-    // public void LevelComplete()
-    // {
-    //     // score += 1000;
-
-    //     int nextLevel = level;
-
-    //     if (nextLevel < SceneManager.sceneCountInBuildSettings) {
-    //         LoadLevel(nextLevel);
-    //     } else {
-    //         LoadLevel(1);
-    //     }
-    // }
 
 
 }
