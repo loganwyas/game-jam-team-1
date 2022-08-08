@@ -24,4 +24,11 @@ public class Player : MonoBehaviour
     void Update()
     {
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Coins")){
+            Destroy(other.gameObject);
+        }
+    }
 }
