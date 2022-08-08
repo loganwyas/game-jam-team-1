@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(response);
+                Debug.Log("Could not start session");
                 done = true;
             }
         });
